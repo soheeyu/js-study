@@ -28,10 +28,29 @@
     <hr>
 
     <div id="app">
-        {{ message }}
+        <p>{{ message }}</p>
+        <!--태그의 속성으로 지시자-->
+        <!--CSS도 클래스 기반이 아니라, 스타일 기반의 속성으로!-->
+        <button v-on:click="clickBtn">click me</button>
     </div>
 </body>
 
 </html>
 
 <!-- vue 스크립트 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            message: "Hello, Vue!!!"
+        },
+        methods: { //이벤트 핸들러를 작성하는 곳
+            clickBtn: function (event) {
+                this.$data.message = "Hello~~~~~~!!!!" //$ 접근해서 바꾸기
+                alert("hi~!")
+            }
+        }
+
+    });
+</script>

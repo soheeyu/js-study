@@ -49,3 +49,20 @@
 </html>
 
 <!-- vue 스크립트 플러그인 임포트 -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            message: "Hello"
+        },
+    });
+    new Vue({
+        el: "#app2",
+        data: {
+            message: "Vue.js"
+        },
+    });
+
+    var obj = { message: "Hello" } // -> 값을 공유하는 건 외부변수로 처리한다
+</script>

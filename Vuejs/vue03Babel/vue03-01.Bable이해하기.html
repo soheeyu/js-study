@@ -38,6 +38,28 @@
 
 </html>
 
+<script type="text/javascript">
+    var name ="abc";
+    var age = 10;
 
+    var getMessage = function () {
+            return "Hello, ES5 world!!";
+    }
+
+    var output_es5 = document.getElementById("output_es5");
+    output_es5.innerText = getMessage();
+</script>
 
 <!-- Babel 사용하기 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+<script type="text/babel">
+        const name = "abc"
+        let age = "10"
+        const getMessage = ()=>{
+            return "Hello, ES6"
+        }
+
+        //태그 찾기
+        var output_es5 = document.getElementById("output_es5");
+        output_es5.innerText = getMessage();
+</script>
