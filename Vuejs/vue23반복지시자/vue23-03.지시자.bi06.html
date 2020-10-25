@@ -31,14 +31,15 @@
                 </tr>
             </thead>
             <tbody id="contacts">
-                <tr v-for="(contact , i ) in contacts" v-bind:key="i">
+                <tr v-for="(a , i ) in contacts" v-bind:key="i">
                     <td>{{i+1}}</td>
-                    <td>{{contact.name}}</td>
-                    <td>{{contact.tel}}</td>
-                    <td>{{contact.address}}</td>
+                    <td>{{a.name}}</td>
+                    <td>{{a.tel}}</td>
+                    <td>{{a.address}}</td>
                 </tr>
             </tbody>
         </table>
+        <button v-on:click="doClick">추가</button>
     </div>
 
 </body>
@@ -46,4 +47,46 @@
 </html>
 
 <!-- vue 스크립트 플러그인 임포트   -->
-
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
+<script>
+    //import axios from /
+    ;
+
+    new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+            contacts: [
+                {
+                    name: 'a',
+                    tel: '1',
+                    address: 'a'
+                },
+                {
+                    name: 'b',
+                    tel: '2',
+                    address: 'b'
+                },
+            ],
+        },
+        //template: ``,
+        methods: {
+            doClick: function (event) {
+                Vue.set(this.$data.contacts, this.$data.contacts.length, { name: 'c', tel: '3', address: 'c' });
+            }
+        },
+        components: {},
+        computed: {
+
+        },
+        watch: {
+
+        },
+        mounted: function () {
+            console.log("mounted");
+        },
+        updated: function () {
+            console.log("updated");
+        },
+    });
+</script>

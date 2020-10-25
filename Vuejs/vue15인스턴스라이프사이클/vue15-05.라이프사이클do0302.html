@@ -34,12 +34,46 @@
 
     <div id="app">
         {{ message }}
-        <!-- 버튼 기능 추가-->
-        
+        <button v-on:click="doClick">Click</button>
     </div>
 </body>
 
 </html>
 
 <!-- vue 스크립트 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
+<script>
+    //import axios from /
+    ;
 
+    new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+            message: "Click",
+            count: 1,
+        },
+        //template: ``,
+        methods: {
+            doClick: function (event) {
+                var aa = "유소희";
+                Vue.set(this.$data, "message", aa + this.$data.count);
+                this.$data.count++;
+            }
+        },
+        components: {},
+        computed: {
+
+        },
+        watch: {
+
+        },
+        mounted: function () {
+            console.log("mounted");
+            this.$data.message = "change a data";
+        },
+        updated: function () {
+            console.log("updated");
+        },
+    });
+</script>

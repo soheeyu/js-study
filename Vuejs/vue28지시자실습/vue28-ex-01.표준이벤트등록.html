@@ -68,8 +68,8 @@
             click 이벤트를 핸들러 ==> imageclick
         </xmp>
         <ul>
-            <li><a class="image3" href="../images/image3.jpg"> 강아지 사진 </a></li>
-            <li><a class="image3" href="../images/image4.jpg"> 고양이 사진 </a></li>
+            <li><a class="image3" href="../images/image3.jpg" v-on:click="imgclick"> 강아지 사진 </a></li>
+            <li><a class="image3" href="../images/image4.jpg" v-on:click="imgclick"> 고양이 사진 </a></li>
         </ul>
 
         <img id="img2" v-bind:src="img_image3" />
@@ -83,8 +83,8 @@
             이미지 위에 마우스를 내리면(mouseout ) ==> ../images/but1.gif , ../images/img_swap_off.png
             이미지 위에 마우스를 올리면(mouseover) ==> ../images/but2.gif , ../images/img_swap_on.png
         </xmp>
-        <img v-bind:src="img_but1" id="but1"/>
-        <img v-bind:src="img_swap" id="img-swap"/>
+        <img v-bind:src="img_but1" id="but1" v-on:mouseover="imgover" v-on:mouseout="imgout" />
+        <img v-bind:src="img_swap" id="img-swap" v-on:mouseover="imgover" v-on:mouseout="imgout" />
         <hr>
 
         <xmp>
@@ -93,23 +93,27 @@
             span에 mouseup 시 이벤트 핸들러 ==> spanmouseup. background-color를 pink로 설정
             span에 mouseout 시 이벤트 핸들러 ==> spanmouseout. background-color를 red로 설정
         </xmp>
-        <span>
+        <span v-on:mouseover="spanmouseover" , v-on:mousedown="spanmousedown" , v-on:mouseup=" spanmouseup" ,
+            v-on:mouseout="spanmouseout">
         </span>
-        <span>
+        <span v-on:mouseover="spanmouseover" , v-on:mousedown="spanmousedown" , v-on:mouseup=" spanmouseup" ,
+            v-on:mouseout="spanmouseout">
         </span>
-        <span>
+        <span v-on:mouseover="spanmouseover" , v-on:mousedown="spanmousedown" , v-on:mouseup=" spanmouseup" ,
+            v-on:mouseout="spanmouseout">
         </span>
         <hr>
 
         <xmp>
             select 에 change 이벤트 핸들러를 작성하시오.
+            change 이벤트 핸들러 v-on:change="selectchange"
         </xmp>
         <select id="sel" v-on:change="selectchange">
             <option value="../images/strawberry.gif">딸기
             <option value="../images/banana.gif">바나나
             <option value="../images/apple.gif" selected>사과
         </select>
-        <img id="img" src="../images/apple.gif">
+        <img id="img" v-bind:src="img_selsect">
         <hr>
 
         <xmp>
@@ -122,13 +126,86 @@
         <hr>
 
     </div>
-    
-    
+
+
 </body>
 
 </html>
 
 <!-- vue 스크립트 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
+<script>
+    //import axios from /
+    ;
 
+    new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+            img_image3: null,
+            img_but1: "../images/but1.gif", // 디폴트 값 설정
+            img_swap: "../images/img_swap_off.png",
+            img_selsect: "../images/apple.gif"
+        },
+        //template: ``,
+        methods: {
+            imgclick: function (event) {
+                // <a href="../images/image3.jpg" 값을 가져오려면 
+                console.log(event.target.href);
 
-
+                Vue.set(this.$data, "img_image3", event.target.href);
+
+                debugger;
+                //a 태그의 페이지 이동 막기
+                event.stopPropagation();
+                event.preventDefault();
+            },
+
+            imgover: function (event) { //indexOf "but1.gif" 들어가 있는지 찾는 것
+                if (event.target.src.indexOf("but1.gif") > 0) {
+                    this.$data.img_but1 = "../images/but2.gif";
+                } else if (event.target.src.indexOf("img_swap_off.png") > 0) {
+                    this.$data.img_swap = "../images/img_swap_on.png";
+                }
+            },
+            imgout: function (event) {
+                if (event.target.src.indexOf("but2.gif") > 0) {
+                    this.$data.img_but1 = "../images/but1.gif";
+                } else if (event.target.src.indexOf("img_swap_on.png") > 0) {
+                    this.$data.img_swap = "../images/img_swap_off.png";
+                }
+            },
+
+            spanmouseover: function (event) {
+                // <span style="backgroundColor:yellow;"
+                event.target.style.backgroundColor = "yellow";
+            },
+            spanmouseout: function (event) {
+                event.target.style.backgroundColor = "blue";
+            },
+            spanmouseup: function (event) {
+                event.target.style.backgroundColor = "pink";
+            },
+            spanmousedown: function (event) {
+                event.target.style.backgroundColor = "red";
+            },
+            selectchange: function (event) {
+                console.log(event.target.value); // 현재 선택한 값을 얻음
+                this.$data.img_selsect = event.target.value;
+            }
+        },
+        components: {},
+        computed: {
+
+        },
+        watch: {
+
+        },
+        mounted: function () {
+            console.log("mounted");
+        },
+        updated: function () {
+            console.log("updated");
+        },
+    });
+</script>
