@@ -59,11 +59,11 @@
         도전2. Vue.js 를 사용한 style multi 바인딩 구현. v-bind:style에 배열 사용<br>
 		
 		<pre>
-            myColor {                
+           .myColor {                
                 background-color: aqua;
                 color: purple;
             }
-            myLayout {
+            .myLayout {
                 width: 150px;
                 height: 80px;
                 text-align: center;
@@ -101,7 +101,17 @@
         }
     </style>
     <div id="example3">
+        <h3> v-bind:class 을 사용한 예제 </h3>
         <button id="btn1" v-bind:class="mystyle">버튼1</button>
+        <p>
+            <input type="checkbox" v-model="mystyle.set1" value="true" />set1 디자인<br />
+            <input type="checkbox" v-model="mystyle.set2" value="true" />set2 디자인<br />
+            <input type="checkbox" v-model="mystyle.set3" value="true" />set3 디자인<br />
+        </P>
+    </div>
+    <div id="example4">
+        <h3> v-bind:style 을 사용한 예제 </h3>
+        <button id="btn1" v-bind:style="[mystyle.set1,mystyle.set2,mystyle.set]">버튼1</button>
         <p>
             <input type="checkbox" v-model="mystyle.set1" value="true" />set1 디자인<br />
             <input type="checkbox" v-model="mystyle.set2" value="true" />set2 디자인<br />
@@ -113,3 +123,115 @@
 </html>
 
 <!-- vue 스크립트 플러그인 임포트   -->
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js"> /* vue 플러그인 임포트 */</script>
+<script>
+    //import axios from /
+    ;
+    
+    new Vue({
+        /* edtmc^2w */
+        el: "#example2",
+        data: {
+            myColor: {
+                backgroundColor:"aqua",
+                color:"purple",
+            },
+            myLayout: {
+                width:"150px",
+                height:"80px",
+                textAlign:"center",
+            }
+        },
+        //template: ``,
+        methods: {
+            
+        },
+        components: { }, 
+        computed: {
+    
+        },
+        watch: {
+    
+        },
+        mounted: function() {
+            console.log("mounted");
+        },
+        updated: function() {
+            console.log("updated");
+        },
+    });
+
+    //import axios from /
+    ;
+    
+    new Vue({
+        /* edtmc^2w */
+        el: "#example3",
+        data: {
+            mystyle: {
+                set1: true,
+                set2: true,
+                set3: true,
+            }
+        },
+        //template: ``,
+        methods: {
+    
+        },
+        components: { }, 
+        computed: {
+    
+        },
+        watch: {
+    
+        },
+        mounted: function() {
+            console.log("mounted");
+        },
+        updated: function() {
+            console.log("updated");
+        },
+    });
+
+    //import axios from /
+    ;
+    
+    new Vue({
+        /* edtmc^2w */
+        el: "#example4",
+        data: {
+            mystyle: {
+                set1: {
+                    backgroundColor: "aqua",
+                    color: "purple",
+                },
+                set2: {
+                    textAlign: "center",
+                    width: "120px",
+                    fontSize: "30px",
+                },
+                set3: {
+                    border:"blue dashed 5px"
+                },
+            }
+        },
+        //template: ``,
+        methods: {
+    
+        },
+        components: { }, 
+        computed: {
+    
+        },
+        watch: {
+    
+        },
+        mounted: function() {
+            console.log("mounted");
+        },
+        updated: function() {
+            console.log("updated");
+        },
+    });
+</script>

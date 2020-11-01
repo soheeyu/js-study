@@ -54,3 +54,52 @@
 </html>
 
 <!-- vue 스크립트 플러그인 임포트   -->
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js"> /* vue 플러그인 임포트 */</script>
+<script>
+    //import axios from /
+    ;
+    
+    new Vue({
+        /* edtmc^2w */
+        el: "#example",
+        data: {
+            // info는 score에 종속된다 -> watch이나 computed 사용
+            score:0,
+            /* info:{
+                warning:false,
+            }, */
+        },
+        //template: ``,
+        methods: {
+    
+        },
+        components: { }, 
+        computed: { 
+        // computed는 리턴해야한다!
+        // input의 value 속성값은 문자열이기 때문에
+            info:function(){
+                var val = Number(this.$data.score); // 형변환
+                if( 0 <= val && val <= 100) {
+                    return {
+                        warning:false,
+                    }
+                }
+                else {
+                    return {
+                        warning:true,
+                    }
+                }
+            },
+        },
+        watch: {
+    
+        },
+        mounted: function() {
+            console.log("mounted");
+        },
+        updated: function() {
+            console.log("updated");
+        },
+    });
+</script>

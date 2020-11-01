@@ -65,7 +65,7 @@
 
     <h2>v-bind 실습</h2>
     <div id="app2">
-		<p>버튼 클리식 나오는 이미지 : action_refresh.gif</p>
+		<p>버튼 클릭 시 나오는 이미지 : action_refresh.gif</p>
         <p>
             <button v-on:click="clickBindSrc">클릭</button>
             <input id="a" type="text" v-bind:value="message" placeholder="입력하세요" />
@@ -79,3 +79,53 @@
 </html>
 
 <!-- vue 스크립트 플러그인 임포트   -->
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js"> /* vue 플러그인 임포트 */</script>
+<script>
+    //import axios from /
+    ;
+    
+    new Vue({
+        /* edtmc^2w */
+        el: "#app1",
+        data: {
+            idA:null,
+            classA:null,
+            styleA:null,
+            message:null,
+            imagePath:null,
+        },
+        //template: ``,
+        methods: {
+            clickBindId:function(event){
+                //this.$data.idA = 3
+                Vue.set(this.$data,"idA",3)
+            },
+            clickBindClass:function(event){
+                Vue.set(this.$data,"classA","abc")
+            },
+            clickBindStyle:function(event){
+                Vue.set(this.$data,"styleA",{backgroundColor:"aqua",fontSize:"30px"})
+            },
+            clickBindValue:function(event){
+                Vue.set(this.$data,"message","sohee-yu")
+            },
+            clickBindSrc:function(event){
+                Vue.set(this.$data,"imagePath",event.target.href)
+            },
+        },
+        components: { }, 
+        computed: {
+    
+        },
+        watch: {
+    
+        },
+        mounted: function() {
+            console.log("mounted");
+        },
+        updated: function() {
+            console.log("updated");
+        },
+    });
+</script>

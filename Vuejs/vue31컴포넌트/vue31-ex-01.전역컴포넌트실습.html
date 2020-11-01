@@ -83,21 +83,19 @@
     <hr />
     
     <div id="app">
-        <header>
-            Header
-        </header>
-        <div id="content">
+        <component-header>
+        </component-header>
+
+        <component-content>
             <p>Content</p>
-            <aside>
-                Aside
-            </aside>
-            <div id="content-list">
-                List
-            </div>
-        </div>
-        <footer>
-            Footer
-        </footer>
+            <component-aside>
+            </component-aside>
+            <component-content-list>
+            </component-content-list>
+        </component-content>
+
+        <component-footer>
+        </component-footer>
     </div>
     
     
@@ -106,4 +104,76 @@
 </html>
 
 <!-- vue 스크립트 플러그인 임포트   -->
-
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js"> /* vue 플러그인 임포트 */</script>
+<script>
+    Vue.component("component-header", { 
+        /* pdtmc^2w */
+        template: `
+        <header>
+            Header
+        </header>
+        `,
+    });
+
+    Vue.component("component-content", { 
+        /* pdtmc^2w */
+        template: `
+            <p>Content</p>
+            <aside>
+                Aside
+            </aside>
+            <div id="content-list">
+                List
+            </div>
+        `,
+    });
+    
+    Vue.component("component-footer", { 
+        /* pdtmc^2w */
+        template: `
+        <footer>
+            Footer
+        </footer>
+        `,
+    });
+
+    var AsideComponent = { 
+        /* pdtmc^2w */
+        template: `
+            <aside>
+                Aside
+            </aside>
+        `,
+    };
+
+    var ContentComponent = { 
+        /* pdtmc^2w */
+        template: `
+            <div id="content-list">
+                List
+            </div>
+        `,
+    };
+
+
+
+    //import axios from /
+    ;
+    
+    new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+    
+        },
+        methods: {
+    
+        },
+        components: {
+            "component-aside" : AsideComponent,
+            "component-content-list":ContentComponent,
+        }, 
+    });
+</script>
+
