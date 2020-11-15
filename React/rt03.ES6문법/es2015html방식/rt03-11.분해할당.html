@@ -9,6 +9,26 @@
     
     <xmp>
     ES6 코드를 브라우저에서 실행하려면 babel 이 필요하다.
+    
+    ** 배열 구조의 분해할당 
+    var points = [20,30,40];
+    var x1 = points[0];
+    var y1 = points[1];
+    var z1 = points[2];
+   
+    const [x2, y2, z2] = points;
+    = 을 기준으로 오른쪽에 있으면 배열 / 왼쪽에 있으면 분해할당
+    const [x3, ,z3] = points;
+    두번 째 값 무시하기
+
+    ** 객체 구조의 분해할당
+    const car = {
+        type:"t",
+        color:"S",
+        model:"2017",
+    }
+   
+    ES6// const {type2, color2, model2, gear2} = car; // react에서 주로 사용
 
     < script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js">/* ES5로 변환 */</script>
     < script type="text/babel">
@@ -18,4 +38,4 @@
 </body>
 </html>
 
-
+
