@@ -76,14 +76,111 @@
         <button name="parent" onClick={this.subCounter}>-</button>
         <p></p>
 
-        <!-- Child 컴포넌트를 등록하고 counter 데이터 속성을 props로 전달한다. -->
+        <!-- Child 컴포넌트를 등록하고 
+          counter 데이터 속성과 콜백 메서드를 props로 전달한다. -->
+        
+        <!-- 스프레드 연산자로 일괄적으로 편하게 넘기기 -->
         <ComponentChild 
-            counter={this.state.counter}
-            addCounter={this.addCounter} 
-            subCounter={this.subCounter}
+            {...this.counter}
+            {...this.func}
         >
         </ComponentChild>
     </div>
 </body>
 
 </html>
+<!-- react 플러그인 include   -->
+<!-- 주의: 사이트를 배포할 때는 'development.js'를 'production.min.js'로 대체하세요. -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/react/16.12.0/umd/react.development.js'> /* import { React} from 'react'; */</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.11.0/umd/react-dom.development.js'>/* import { ReactDOM } from 'react-dom'; */</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js'>/* JSX를 자바스크립트로 변환 */</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.5/redux.js'> /* import {Redux} from 'redux' */ </script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/react-redux/7.1.3/react-redux.js'>/* import {ReactRedux} from 'react-redux'; */</script>
+<script type='text/babel'>
+  //import React, { Component } from 'react'
+  //import ReactDOM from 'react-dom'
+  
+  console.log(React)
+  console.log(ReactDOM)
+  
+  class Child extends React.Component {
+
+      state = {
+        num:0,
+      }
+      style = {
+        componentChild : {
+          width: "80",
+          backgroundColor: "lightgray",
+          padding: "5% 5% 10% 0",
+        }
+      }
+      addCounter = (event)=>{
+          // 이벤트 핸들러는 화살표 함수로 만들면 this를 bind() 생략해도 된다
+          console.log(event.target)//
+          this.setState({
+            ...this.state,
+            num:this.state.num+1
+          })
+      }
+      subCounter = (event)=>{
+          // 이벤트 핸들러는 화살표 함수로 만들면 this를 bind() 생략해도 된다
+          console.log(event.target)//
+          this.setState({
+            ...this.state,
+            num:this.state.num-1
+          })
+      }
+      render() {
+          return (
+            <div>
+              
+            </div>
+          )
+      }
+  }
+  
+  //export default rt23-ex01.counter
+
+
+  //import React, { Component } from 'react'
+  //import ReactDOM from 'react-dom'
+  
+  console.log(React)
+  console.log(ReactDOM)
+  
+  class Parent extends React.Component {
+  
+      static defaultProps = {  /*  props의 디폴트 값 설정 */  } 
+      static propsTypes = {  /* props의 프로퍼티 타입 설정 */ } 
+      state = {
+  
+      }
+      constructor(props) {
+          super()
+          // this 바인딩
+      }
+      componentDidMount() {
+          // 마운트 완료 후에  : 페이지 load 될 때 한번
+      }
+      componentDidUpdate(prevProps, prevState) {
+          // 업데이트 완료 후에 : 여러번, state 가 변경될 때마다
+      }
+      componentWillUnmount() {
+          // 언마운트 완료 후에 : 페이지 unload 될 때 한번
+      }
+      handler = (event)=>{
+          // 이벤트 핸들러는 화살표 함수로 만들면 this를 bind() 생략해도 된다
+          console.log(event.target)//
+      }
+      render() {
+          return (
+              <div>
+                  
+              </div>
+          )
+      }
+  }
+  
+  //export default Parent
+</script>
